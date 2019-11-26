@@ -18,9 +18,9 @@ var counter = 0;
 
 
 var printMessage = function (message) {
-  counter += 1;
   console.log(counter);
   if (message.body.waterLevel > 100) {
+    counter += 1;
     if (counter == 1){
       client.messages.create({
         body: 'water plant pendejo \nMichaela ALbuja Amor',
@@ -32,6 +32,7 @@ var printMessage = function (message) {
       counter = 0;
     }
   }
+  counter = 0;
 };
 
 // Connect to the partitions on the IoT Hub's Event Hubs-compatible endpoint.
