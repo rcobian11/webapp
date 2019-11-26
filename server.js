@@ -32,7 +32,9 @@ var printMessage = function (message) {
       counter = 0;
     }
   }
-  counter = 0;
+  else{
+    counter = 0;
+  }
 };
 
 // Connect to the partitions on the IoT Hub's Event Hubs-compatible endpoint.
