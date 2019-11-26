@@ -14,26 +14,59 @@ var authToken = '95e66449ea785c6f907214414157073c';   // Your Auth Token from ww
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
 
-var counter = 0;
+var wlcounter = 0;
+var hcounter = 0;
+var tcounter = 0;
 
 
 var printMessage = function (message) {
-  console.log(counter);
   if (message.body.waterLevel > 100) {
-    counter += 1;
-    if (counter == 1){
+    wlcounter += 1;
+    if (wlcounter == 1){
       client.messages.create({
-        body: 'water plant pendejo \nMichaela ALbuja Amor',
+        body: 'Water content is low. Water plant.',
         to: '+12096106350',  // Text this number
         from: '+12056428457' // From a valid Twilio number
       })
     }
-    if (counter > 10){
-      counter = 0;
+    if (wlcounter > 10){
+      wlcounter = 0;
     }
   }
   else{
-    counter = 0;
+    wlcounter = 0;
+  }
+  if (message.body.temperature > 33) {
+    tcounter += 1;
+    if (tcounter == 1){
+      client.messages.create({
+        body: 'temperature is to hot move plant to shade',
+        to: '+12096106350',  // Text this number
+        from: '+12056428457' // From a valid Twilio number
+      })
+    }
+    if (tcounter > 10){
+      tcounter = 0;
+    }
+  }
+  else{
+    tcounter = 0;
+  }
+  if (message.body.humidity > 80) {
+    hcounter += 1;
+    if (hcounter == 1){
+      client.messages.create({
+        body: 'humidity is very high. move plant to dry area',
+        to: '+12096106350',  // Text this number
+        from: '+12056428457' // From a valid Twilio number
+      })
+    }
+    if (hcounter > 10){
+      hcounter = 0;
+    }
+  }
+  else{
+    hcounter = 0;
   }
 };
 
