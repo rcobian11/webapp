@@ -9,7 +9,7 @@ var printError = function (err) {
 };
 
 var accountSid = 'ACffd410f50c9028c309e85d1ed73aeb80'; // Your Account SID from www.twilio.com/console
-var authToken = '95e66449ea785c6f907214414157073c';   // Your Auth Token from www.twilio.com/console
+var authToken = '';   // Your Auth Token from www.twilio.com/console
 
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
